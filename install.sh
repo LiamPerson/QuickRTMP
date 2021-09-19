@@ -4,12 +4,12 @@
 NGINX_VERSION=1.21.3
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
-echo -e "Are you sure you wish to install NGINX $NGINX_VERSION with the RTMProtocol on this server\? [y/n] \nThis will also install required dependencies: ufw unzip build-essential libpcre3 libpcre3-dev libssl-dev"
+echo -e "Are you sure you wish to install NGINX $NGINX_VERSION with the RTMProtocol on this server\? [y/n] \nThis will also install required dependencies: ufw unzip build-essential libpcre3 libpcre3-dev zlib1g zlib1g-dev libssl-dev"
 read -n 1 -r -s
 if [[ $REPLY =~ ^[Yy]$ ]]
 then 
 	echo -e "Installing dependencies ...\n"
-	apt-get -y install build-essential libpcre3 libpcre3-dev libssl-dev unzip ufw
+	apt-get -y install build-essential libpcre3 libpcre3-dev libssl-dev unzip ufw zlib1g zlib1g-dev
 	cd ~
 	echo -e "Downloading NGINX $NGINX_VERSION ...\n"
 	wget http://nginx.org/download/nginx-$NGINX_VERSION.tar.gz
@@ -42,10 +42,10 @@ then
 		ufw enable
 	fi
 	echo -e "Cleaning up files ...\n"
-	rm -rfv nginx-$NGINX_VERSION
-	rmdir nginx-$NGINX_VERSION
-	rm dev.zip
-	rm nginx-$NGINX_VERSION.tar.gz
+	rm -rfv $SCRIPT_DIR/nginx-$NGINX_VERSION
+	rmdir $SCRIPT_DIR/nginx-$NGINX_VERSION
+	rm $SCRIPT_DIR/dev.zip
+	rm $SCRIPT_DIR/nginx-$NGINX_VERSION.tar.gz
 	echo -e "\nFinished!\n"
 else
 	echo -e "\nExiting...\n"
