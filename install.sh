@@ -46,6 +46,8 @@ then
 	rmdir $SCRIPT_DIR/nginx-$NGINX_VERSION
 	rm $SCRIPT_DIR/dev.zip
 	rm $SCRIPT_DIR/nginx-$NGINX_VERSION.tar.gz
+	rm -rfv $SCRIPT_DIR/nginx-rtmp-module-dev
+	rmdir $SCRIPT_DIR/nginx-rtmp-module-dev
 	echo -e "\nFinished!\n"
 else
 	echo -e "\nExiting...\n"
