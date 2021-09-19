@@ -9,7 +9,7 @@ read -n 1 -r -s
 if [[ $REPLY =~ ^[Yy]$ ]]
 then 
 	echo -e "Installing dependencies ...\n"
-	apt-get -y install build-essential libpcre3 libpcre3-dev libssl-dev unzip ufw zlib1g zlib1g-dev
+	apt-get -y install build-essential libpcre3 libpcre3-dev libssl-dev unzip zlib1g zlib1g-dev
 	cd ~
 	echo -e "Downloading NGINX $NGINX_VERSION ...\n"
 	wget http://nginx.org/download/nginx-$NGINX_VERSION.tar.gz
@@ -37,6 +37,7 @@ then
 	read -n 1 -r -s
 	if [[ $REPLY =~ ^[Yy]$ ]]
 	then 
+		apt-get -y ufw
 		echo -e "Adding UFW rule ...\n"
 		ufw allow 1935
 		ufw enable
