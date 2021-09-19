@@ -1,10 +1,10 @@
 #!/bin/bash
-echo -e "Are you sure you wish to install NGINX 1.21.3 with the RTMProtocol on this server\? [y/n] \nThis will also install required dependencies build-essential libpcre3 libpcre3-dev libssl-dev"
+echo -e "Are you sure you wish to install NGINX 1.21.3 with the RTMProtocol on this server\? [y/n] \nThis will also install required dependencies: ufw unzip build-essential libpcre3 libpcre3-dev libssl-dev"
 read -n 1 -r -s
 if [[ $REPLY =~ ^[Yy]$ ]]
 then 
 	echo -e "Installing dependencies ...\n"
-	apt-get install build-essential libpcre3 libpcre3-dev libssl-dev
+	apt-get install build-essential libpcre3 libpcre3-dev libssl-dev unzip ufw
 	cd ~
 	echo -e "Downloading NGINX 1.21.3 ...\n"
 	wget http://nginx.org/download/nginx-1.21.3.tar.gz
@@ -38,6 +38,7 @@ then
 		ufw allow 1935
 		ufw enable
 	fi
+	echo -e "Cleaning up files ...\n"
 	echo -e "\nFinished!\n"
 else
 	echo -e "\nExiting...\n"
