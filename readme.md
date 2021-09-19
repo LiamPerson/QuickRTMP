@@ -33,4 +33,4 @@ All NGINX files are located in <code>/usr/local/nginx</code>. This means the con
 
 <hr>
 
-<i>Use with caution! <br>I am not responsible if you accidentally register the wrong domain or remove something important!</i>
+<i>Use with caution! <br>I am not responsible if you accidentally destroy your server or remove something important!</i>
